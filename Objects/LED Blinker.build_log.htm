@@ -27,43 +27,6 @@ Project File Date:  01/31/2023
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-main.c(2): warning: In file included from...
-./CLOCK.h(9): warning: // comments are not allowed in this language [-Wcomment]
-#define PLL_P 0 //0 to the sixteenth position (PLL=2)
-                ^
-main.c(3): warning: In file included from...
-./GPIO.h(3): warning: In file included from...
-./stm32f446xx.h(15940): warning: no newline at end of file [-Wnewline-eof]
-#endif /* __STM32F446xx_H */
-                            ^
-main.c(4): warning: In file included from...
-./SYS_INIT.h(7): warning: In file included from...
-./stm32f446xx.h(15940): warning: no newline at end of file [-Wnewline-eof]
-#endif /* __STM32F446xx_H */
-                            ^
-main.c(5): warning: In file included from...
-./USART.h(18): warning: // comments are not allowed in this language [-Wcomment]
-// USART 2 Configuration
-^
-main.c(7): warning: no previous prototype for function 'GPIO_config' [-Wmissing-prototypes]
-void GPIO_config(void){
-     ^
-main.c(7): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void GPIO_config(void){
-^
-static 
-main.c(15): warning: no previous prototype for function 'delay' [-Wmissing-prototypes]
-void delay(uint32_t time)
-     ^
-main.c(15): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void delay(uint32_t time)
-^
-static 
-main.c(24): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
-        GPIO_InitTypeDef x;
-                         ^
-7 warnings generated.
-compiling main.c...
 GPIO.c(1): warning: In file included from...
 ./GPIO.h(3): warning: In file included from...
 ./stm32f446xx.h(15940): warning: no newline at end of file [-Wnewline-eof]
@@ -73,63 +36,20 @@ GPIO.c(2): warning: In file included from...
 ./CLOCK.h(9): warning: // comments are not allowed in this language [-Wcomment]
 #define PLL_P 0 //0 to the sixteenth position (PLL=2)
                 ^
-GPIO.c(6): warning: // comments are not allowed in this language [-Wcomment]
-// You need to implement
+GPIO.c(9): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOx->BSRR |= ((1<<GPIO_pin)<<16);
+                                    ~~  ~~~~~~~~~~~~~^~~~
+GPIO.c(13): warning: // comments are not allowed in this language [-Wcomment]
+// You need to implement this function  
 ^
-GPIO.c(4): warning: unused parameter 'GPIOx' [-Wunused-parameter]
-void GPIO_WritePin(GPIO_TypeDef *GPIOx,uint16_t GPIO_pin,GPIO_PinState PinState)
-                                 ^
-GPIO.c(4): warning: unused parameter 'GPIO_pin' [-Wunused-parameter]
-void GPIO_WritePin(GPIO_TypeDef *GPIOx,uint16_t GPIO_pin,GPIO_PinState PinState)
-                                                ^
-GPIO.c(4): warning: unused parameter 'PinState' [-Wunused-parameter]
-void GPIO_WritePin(GPIO_TypeDef *GPIOx,uint16_t GPIO_pin,GPIO_PinState PinState)
-                                                                       ^
-GPIO.c(9): warning: unused parameter 'GPIOx' [-Wunused-parameter]
-void GPIO_Init(GPIO_TypeDef* GPIOx,GPIO_InitTypeDef *GPIO_Init)
-                             ^
-GPIO.c(9): warning: unused parameter 'GPIO_Init' [-Wunused-parameter]
+GPIO.c(11): warning: unused parameter 'GPIO_Init' [-Wunused-parameter]
 void GPIO_Init(GPIO_TypeDef* GPIOx,GPIO_InitTypeDef *GPIO_Init)
                                                      ^
-8 warnings generated.
+5 warnings generated.
 compiling GPIO.c...
-USART.c(1): warning: In file included from...
-./USART.h(18): warning: // comments are not allowed in this language [-Wcomment]
-// USART 2 Configuration
-^
-USART.c(4): warning: In file included from...
-./CLOCK.h(9): warning: // comments are not allowed in this language [-Wcomment]
-#define PLL_P 0 //0 to the sixteenth position (PLL=2)
-                ^
-USART.c(5): warning: In file included from...
-./stm32f446xx.h(15940): warning: no newline at end of file [-Wnewline-eof]
-#endif /* __STM32F446xx_H */
-                            ^
-USART.c(17): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-        for(uint8_t i=0;i<size;i++){
-            ^
-USART.c(17): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-USART.c(28): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-        for(uint8_t i=0;i<size;i++){
-            ^
-USART.c(28): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-USART.c(46): warning: // comments are not allowed in this language [-Wcomment]
-// Send a string to the UART PORTx
-^
-8 warnings generated.
-compiling USART.c...
-CLOCK.c(1): warning: In file included from...
-./CLOCK.h(9): warning: // comments are not allowed in this language [-Wcomment]
-#define PLL_P 0 //0 to the sixteenth position (PLL=2)
-                ^
-CLOCK.c(30): warning: // comments are not allowed in this language [-Wcomment]
-RCC->CR |=RCC_CR_HSEON; // set CR bit 16 
-                        ^
-2 warnings generated.
-compiling CLOCK.c...
 linking...
-Program Size: Code=936 RO-data=468 RW-data=0 ZI-data=1640  
-".\Objects\LED Blinker.axf" - 0 Error(s), 25 Warning(s).
+Program Size: Code=1024 RO-data=468 RW-data=0 ZI-data=1640  
+".\Objects\LED Blinker.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -160,7 +80,7 @@ Package Vendor: Keil
       Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
       Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f446xx.s
       Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
-Build Time Elapsed:  00:00:10
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>
