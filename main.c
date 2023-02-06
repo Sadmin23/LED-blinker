@@ -4,33 +4,24 @@
 #include "SYS_INIT.h"
 #include "USART.h"
 
-void GPIO_config(void){
-
-	RCC->AHB1ENR |= (1<<0);
-	GPIOA->MODER |= (1<<14);
-	
-	GPIOA->OTYPER = 0;
-	GPIOA->OSPEEDR = 0;
-}
-void delay(uint32_t time)
-{
-	while(time--);
-}
 int main(void)
 {
 	initClock();
 	sysInit();
 	
-	GPIO_InitTypeDef x;
+	GPIO_InitTypeDef z;
 	
-	GPIO_Init(GPIOA, &x);
+	z.Alternate=0;
+	z.Pull=0;
+	z.Speed=0;
+	z.Pin=16;
+	z.Mode=0;
 	
 	while(1)
 	{
-		GPIOA->BSRR |= (1<<7);
-		GPIO_WritePin(GPIOA, 7, GPIO_PIN_RESET);
+		GPIO_WritePin(GPIOA, 5, GPIO_PIN_RESET);
 		ms_delay(1000);
-		GPIO_WritePin(GPIOA, 7, GPIO_PIN_SET);
+		GPIO_WritePin(GPIOA, 5, GPIO_PIN_SET);
 		ms_delay(1000);
 	}
 	
